@@ -1,0 +1,145 @@
+using System;
+using System.CodeDom.Compiler;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Markup;
+using System.Windows.Shapes;
+
+namespace Nezur_Interface
+{
+    // Token: 0x02000004 RID: 4
+    public class KeyPage : Window, IComponentConnector
+    {
+        // Token: 0x06000017 RID: 23 RVA: 0x000024E4 File Offset: 0x000006E4
+        public KeyPage()
+        {
+            this.InitializeComponent();
+            base.MouseLeftButtonDown += delegate (object s, MouseButtonEventArgs e)
+            {
+                base.DragMove();
+            };
+            this.CloseT.MouseLeftButtonDown += delegate (object s, MouseButtonEventArgs e)
+            {
+                base.Close();
+            };
+            this.MinimizeT.MouseLeftButtonDown += delegate (object s, MouseButtonEventArgs e)
+            {
+                base.WindowState = WindowState.Minimized;
+            };
+            this.OpenLinks();
+
+            // Removed KeyAuth.init() and blacklisting check
+            new MainWindow().Show(); // Automatically show main window
+            base.Close();
+        }
+
+        // Token: 0x06000018 RID: 24 RVA: 0x00002564 File Offset: 0x00000764
+        [NullableContext(1)]
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Skip key verification and directly open the main window
+            new MainWindow().Show();
+            base.Close();
+        }
+
+        // Token: 0x06000019 RID: 25 RVA: 0x000025CC File Offset: 0x000007CC
+        private void OpenLinks()
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://execkey.nezur.io",
+                UseShellExecute = true
+            });
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://discord.gg/nezur",
+                UseShellExecute = true
+            });
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://1cheats.com/store/category/69-nezur-executor/",
+                UseShellExecute = true
+            });
+        }
+
+        // Token: 0x0600001A RID: 26 RVA: 0x00002630 File Offset: 0x00000830
+        [NullableContext(1)]
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "https://execkey.nezur.io",
+                UseShellExecute = true
+            });
+        }
+
+        // Token: 0x0600001B RID: 27 RVA: 0x00002650 File Offset: 0x00000850
+        [DebuggerNonUserCode]
+        [GeneratedCode("PresentationBuildTasks", "8.0.7.0")]
+        public void InitializeComponent()
+        {
+            if (this._contentLoaded)
+            {
+                return;
+            }
+            this._contentLoaded = true;
+            Uri resourceLocater = new Uri("/Nezur_Interface;component/keypage.xaml", UriKind.Relative);
+            Application.LoadComponent(this, resourceLocater);
+        }
+
+        // Token: 0x0600001C RID: 28 RVA: 0x00002680 File Offset: 0x00000880
+        [DebuggerNonUserCode]
+        [GeneratedCode("PresentationBuildTasks", "8.0.7.0")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        void IComponentConnector.Connect(int connectionId, object target)
+        {
+            switch (connectionId)
+            {
+                case 1:
+                    this.Key = (PasswordBox)target;
+                    return;
+                case 2:
+                    ((Button)target).Click += this.Button_Click_1;
+                    return;
+                case 3:
+                    ((Button)target).Click += this.Button_Click;
+                    return;
+                case 4:
+                    this.CloseT = (Ellipse)target;
+                    return;
+                case 5:
+                    this.MinimizeT = (Ellipse)target;
+                    return;
+                default:
+                    this._contentLoaded = true;
+                    return;
+            }
+        }
+
+        // Token: 0x0600001D RID: 29 RVA: 0x00002709 File Offset: 0x00000909
+        // Note: this type is marked as 'beforefieldinit'.
+        static KeyPage()
+        {
+        }
+
+        // Token: 0x04000007 RID: 7
+        [Nullable(1)]
+        public static api KeyAuth = new api("NezurExecutor1", "2UWe8CI1m7", "2940096b97aef5df6dde31e83a38f3b0612b3b26ffaf5469b7882b2a23280087", "1.0", null);
+
+        // Token: 0x04000008 RID: 8
+        internal PasswordBox Key;
+
+        // Token: 0x04000009 RID: 9
+        internal Ellipse CloseT;
+
+        // Token: 0x0400000A RID: 10
+        internal Ellipse MinimizeT;
+
+        // Token: 0x0400000B RID: 11
+        private bool _contentLoaded;
+    }
+}
