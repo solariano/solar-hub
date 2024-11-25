@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome!</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple App Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        .app {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .app:hover {
+            background-color: #f1f1f1;
+        }
+        .app-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .app-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .app-desc {
+            font-size: 14px;
+            color: #555;
+        }
+        .download-button {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple App Store</h1>
+        <!-- App 1 -->
+        <div class="app">
+            <div class="app-info">
+                <span class="app-name">dnSpy</span>
+                <span class="app-desc">Powerful .NET Debugger & Assembly Editer</span>
+            </div>
+            <a href="https://github.com/dnSpy/dnSpy/releases/download/v6.1.8/dnSpy-net-win64.zip" >Download</a>
+        </div>
+        <!-- App 2 -->
+        <div class="app">
+            <div class="app-info">
+                <span class="app-name">Nezur</span>
+                <span class="app-desc">Nezur Roblox's #1 Executor Supported by Bloxstrap & Roblox Client!</span>
+            </div>
+            <a href="https://www.dropbox.com/scl/fi/o3wxq9zvo3lq2lwjcdtw3/nezur.zip?rlkey=99h5ae1rvzayruejs78mnb4vd&st=fyekxea7&dl=1">Download</a>
+        </div>
+        <!-- App 3 -->
+        <div class="app">
+            <div class="app-info">
+                <span class="app-name">Auto Clicker</span>
+                <span class="app-desc">Working Auto Clicker Supports Android, windows, MacOS (all versions at https://opautoclicker.com)</span>
+            </div>
+            <a href="https://github.com/solariano/solar-hub/raw/refs/heads/main/autoclicker.exe">Download</a>
+        </div>
+    </div>
+</body>
+</html>
