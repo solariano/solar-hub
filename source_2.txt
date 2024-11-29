@@ -1,0 +1,184 @@
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Net.WebSockets;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using FastColoredTextBoxNS;
+
+namespace atlantis
+{
+    public class Main : Form
+    {
+        private static WebSocket global_websocket;
+        private static Thread webSocketThread;
+        private IContainer components;
+        private Button button1;
+        private Button button2;
+        private Button button4;
+        private Button button3;
+        private FastColoredTextBox fastColoredTextBox1;
+
+        public Main()
+        {
+            this.InitializeComponent();
+        }
+
+        private async Task WebSocket_Connection()
+        {
+            // Placeholder for the WebSocket connection logic
+            await Task.Delay(0);
+        }
+
+        private async Task OnWebSocketConnection(WebSocket webSocket)
+        {
+            // Placeholder for handling WebSocket connection events
+            await Task.Delay(0);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            webSocketThread = new Thread(() =>
+            {
+                WebSocket_Connection().GetAwaiter().GetResult();
+            });
+            webSocketThread.Start();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            webSocketThread.Interrupt();
+            global_websocket?.Dispose();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (global_websocket == null)
+            {
+                string text = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", "oRniz4vtL94l.exe");
+                if (File.Exists(text))
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo
+                    {
+                        FileName = text,
+                        Arguments = (Globals.Hwid ?? ""),
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    };
+                    try
+                    {
+                        Process.Start(startInfo);
+                        return;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An Unknown Exception occurred while trying to attach to Roblox.");
+                        return;
+                    }
+                }
+                MessageBox.Show("Injector wasn't found\nMake sure to disable Windows Defender.");
+                return;
+            }
+            MessageBox.Show("Atlantis is already attached!");
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            // Example logic for the Execute button
+            await Task.Delay(0);  // Placeholder for asynchronous execution logic
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null)
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.components = new Container();
+            ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(Main));
+            this.button1 = new Button();
+            this.button2 = new Button();
+            this.button4 = new Button();
+            this.button3 = new Button();
+            this.fastColoredTextBox1 = new FastColoredTextBox();
+            ((ISupportInitialize)this.fastColoredTextBox1).BeginInit();
+            base.SuspendLayout();
+            
+            this.button1.Location = new Point(12, 338);
+            this.button1.Name = "button1";
+            this.button1.Size = new Size(75, 28);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Execute";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += this.button1_Click;
+            
+            this.button2.Location = new Point(93, 338);
+            this.button2.Name = "button2";
+            this.button2.Size = new Size(75, 28);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Open";
+            this.button2.UseVisualStyleBackColor = true;
+            
+            this.button4.Location = new Point(174, 338);
+            this.button4.Name = "button4";
+            this.button4.Size = new Size(75, 28);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Save";
+            this.button4.UseVisualStyleBackColor = true;
+            
+            this.button3.Location = new Point(489, 338);
+            this.button3.Name = "button3";
+            this.button3.Size = new Size(75, 28);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Attach";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += this.button3_Click;
+            
+            this.fastColoredTextBox1.AutoCompleteBracketsList = new char[] { '(', ')', '{', '}', '[', ']', '"', '"', '\'', '\'' };
+            this.fastColoredTextBox1.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\n^\\s*(case|default)\\s*[^:]*(?<range>:)\\s*(?<range>[^;]+);";
+            this.fastColoredTextBox1.AutoScrollMinSize = new Size(115, 14);
+            this.fastColoredTextBox1.BackBrush = null;
+            this.fastColoredTextBox1.CharHeight = 14;
+            this.fastColoredTextBox1.CharWidth = 8;
+            this.fastColoredTextBox1.Cursor = Cursors.IBeam;
+            this.fastColoredTextBox1.DefaultMarkerSize = 8;
+            this.fastColoredTextBox1.DisabledColor = Color.FromArgb(100, 180, 180, 180);
+            this.fastColoredTextBox1.IsReplaceMode = false;
+            this.fastColoredTextBox1.Location = new Point(10, 12);
+            this.fastColoredTextBox1.Name = "fastColoredTextBox1";
+            this.fastColoredTextBox1.Paddings = new Padding(0);
+            this.fastColoredTextBox1.SelectionColor = Color.FromArgb(60, 0, 0, 255);
+            this.fastColoredTextBox1.ServiceColors = (ServiceColors)componentResourceManager.GetObject("fastColoredTextBox1.ServiceColors");
+            this.fastColoredTextBox1.Size = new Size(552, 320);
+            this.fastColoredTextBox1.TabIndex = 6;
+            this.fastColoredTextBox1.Text = "print(\"hi\")";
+            this.fastColoredTextBox1.Zoom = 100;
+
+            base.AutoScaleDimensions = new SizeF(6f, 13f);
+            base.AutoScaleMode = AutoScaleMode.Font;
+            base.ClientSize = new Size(574, 367);
+            base.Controls.Add(this.fastColoredTextBox1);
+            base.Controls.Add(this.button3);
+            base.Controls.Add(this.button4);
+            base.Controls.Add(this.button2);
+            base.Controls.Add(this.button1);
+            base.FormBorderStyle = FormBorderStyle.FixedDialog;
+            base.Name = "Main";
+            base.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Atlantis";
+            base.FormClosing += this.Form1_FormClosing;
+            base.Load += this.Form1_Load;
+            
+            ((ISupportInitialize)this.fastColoredTextBox1).EndInit();
+            base.ResumeLayout(false);
+        }
+    }
+}
